@@ -23,7 +23,7 @@ public class WebSecurityConfig {
                         .requestMatchers(PathRequest.toStaticResources().atCommonLocations()).permitAll() // resources 접근 허용 설정
                         .requestMatchers("/users/**").permitAll()
                         .requestMatchers("/todos/**").permitAll()
-                        .anyRequest().authenticated() // 그 외 모든 요청 인증처리
+                        .anyRequest().authenticated()// 그 외 모든 요청 인증처리
         );
 
         // 로그인 사용
