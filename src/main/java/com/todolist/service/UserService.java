@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
 public class UserService {
 
@@ -25,4 +27,8 @@ public class UserService {
         return userRepository.save(newUser);
     }
 
+    public User getUserById(Long id) {
+        Optional<User> user = userRepository.findById(id);
+        return user.orElse(null);
+    }
 }

@@ -22,7 +22,7 @@ public class WebSecurityConfig {
                 authorizeHttpRequests
                         .requestMatchers(PathRequest.toStaticResources().atCommonLocations()).permitAll() // resources 접근 허용 설정
                         .requestMatchers("/users/**").permitAll()
-                        .requestMatchers("/todos/**").permitAll()
+//                        .requestMatchers("/todos/**").permitAll()
                         .anyRequest().authenticated()// 그 외 모든 요청 인증처리
         );
 
@@ -32,7 +32,7 @@ public class WebSecurityConfig {
                         // 로그인 View 제공
                         .loginPage("/users/login")
                         // 로그인 처리
-                        .loginProcessingUrl("/users/login")
+                        .loginProcessingUrl("/users/login-process")
                         // 로그인 처리 후 성공 시 URL
                         .defaultSuccessUrl("/")
                         // 로그인 처리 후 실패 시 URL

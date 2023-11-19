@@ -11,10 +11,16 @@ import org.springframework.web.bind.annotation.*;
 public class UserController {
 
     private final UserService userService;
-
     @Autowired
+
     public UserController(UserService userService) {
         this.userService = userService;
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<User> getUserById(@PathVariable Long id) {
+        User user = userService.getUserById(id);
+        return ResponseEntity.ok(user);
     }
 
     @PostMapping("/register")
@@ -24,7 +30,8 @@ public class UserController {
     }
 
     @PostMapping("/login")
-    public ResponseEntity<?> loginUser(@RequestParam String username, @RequestParam String password) {
-        return ResponseEntity.ok("User logged in successfully");
+    public ResponseEntity<?> loginUser() {
+        return ResponseEntity.ok("사용자 로그인 성공");
     }
+
 }

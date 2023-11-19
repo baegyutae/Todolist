@@ -20,18 +20,21 @@ public class TodoController {
     }
 
     @PostMapping
-    public ResponseEntity<Todo> addTodo(@RequestBody Todo todo) {
-        return ResponseEntity.ok(todoService.addTodo(todo));
+    public ResponseEntity<Todo> createTodo(@RequestBody Todo todo) {
+        Todo newTodo = todoService.addTodo(todo);
+        return ResponseEntity.ok(newTodo);
     }
 
     @GetMapping
     public ResponseEntity<List<Todo>> getAllTodos() {
-        return ResponseEntity.ok(todoService.getAllTodos());
+        List<Todo> todos = todoService.getAllTodos();
+        return ResponseEntity.ok(todos);
     }
 
     @GetMapping("/{id}")
     public ResponseEntity<Todo> getTodoById(@PathVariable Long id) {
-        return ResponseEntity.ok(todoService.getTodoById(id));
+        Todo todo = todoService.getTodoById(id);
+        return ResponseEntity.ok(todo);
     }
 
     @PutMapping("/{id}")
